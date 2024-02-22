@@ -20,9 +20,22 @@ def parse_args():
     return args
 
 
+def command_erored():
+    print('ERROR: Failed to run command', file=sys.stderr)
+    exit(1)
+
+
 def nvidia_smi():
-    proc = Popen(['nvidia-smi'], stdout=PIPE)
+    try:
+        proc = Popen(['nvidia-smi'], stdout=PIPE)
+    except FileNotFoundError:
+        command_erored()
+
     stdout, _ = proc.communicate()
+
+    if proc.returncode != 0:
+        command_erored()
+
     return stdout.decode('utf-8')
 
 
