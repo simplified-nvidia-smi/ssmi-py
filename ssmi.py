@@ -66,9 +66,7 @@ def ssmi():
         if print_proc_info:
             print(line)
         next(lines)
-        line = next(lines)
-        if print_proc_info:
-            print(line)
+
         while True:
             line = next(lines)
             if print_proc_info:
