@@ -95,7 +95,7 @@ def ssmi():
         if print_proc_info:
             print(line)
 
-        # dump the line that has overflow text from the headders
+        # dump the line that has overflow text from the headers
         # "|        ID   ID                                                             Usage      |"
         next(lines)
 
