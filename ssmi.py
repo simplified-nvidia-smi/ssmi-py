@@ -1,4 +1,5 @@
 import argparse
+import sys
 from subprocess import Popen, PIPE
 
 MAX_ITERS = 1000
@@ -20,9 +21,9 @@ def parse_args():
 
 
 def nvidia_smi():
-    proc = Popen(['nvidia-smi'], stdout=PIPE, encoding='utf-8')
+    proc = Popen(['nvidia-smi'], stdout=PIPE)
     stdout, _ = proc.communicate()
-    return stdout
+    return stdout.decode('utf-8')
 
 
 def ssmi():
