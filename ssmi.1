@@ -1,0 +1,54 @@
+.TH SSMI 1 "17 February 2024" "version 1.1" "SSMI Manual"
+.SH NAME
+ssmi \- Simplified NVIDIA System Management Interface tool
+
+.SH SYNOPSIS
+.B ssmi
+.br
+.B ssmi -g
+.br
+.B ssmi -p
+
+.SH DESCRIPTION
+The \fBssmi\fR command provides a simplified version of the output from the `nvidia-smi` tool, focusing on displaying GPU and process details more concisely. It is designed to offer a streamlined overview of the most pertinent information for quick assessments.
+
+The most common use case is to run \fBssmi\fR without any arguments, which will display both GPU details and process information. Flags can be used to filter these sections if desired.
+
+.SH EXAMPLES
+To display both GPU and process details:
+.RS
+.B ssmi
+.RE
+
+To display only GPU details:
+.RS
+.B ssmi -g
+.RE
+
+To display only process details:
+.RS
+.B ssmi -p
+.RE
+
+.SH OPTIONS
+.TP
+.BR \-g ", " \-\-gpus
+Display GPU details, including information about each GPU's performance, temperature, power usage, memory usage, and utilization metrics.
+
+.TP
+.BR \-p ", " \-\-procs
+Display process details, listing each process utilizing the GPU, including the process ID, type, name, and memory usage.
+
+.TP
+.BR \-h ", " \-\-help
+Display help information and exit.
+
+
+.SH SEE ALSO
+.BR nvidia-smi (1)
+
+.SH AUTHOR
+This manual page was written for the ssmi project by its authors.
+
+.SH "REPORTING BUGS"
+For bug reports, use the issue tracker provided by the ssmi project.
