@@ -8,36 +8,52 @@ def nvidia_smi():
     return stdout
 
 def ssmi():
+    print_gpu_info = True
+    print_proc_info = True
+
     nvidia_smi_output = nvidia_smi()
     nvidia_smi_output.strip()
     lines = iter(nvidia_smi_output.split('\n'))
     try:
         next(lines)
         for _ in range(3):
-            print(next(lines))
+            line = next(lines)
+            if print_gpu_info:
+                print(line)
 
         while True:
             line = next(lines)
 
             if line[0] == ' ':
                 break
-
-            print(line[:6],end='')
+            if print_gpu_info:
+                print(line[:6],end='')
             line = next(lines)
-            print(line[1:12]+line[13:19]+line[23:])
+            if print_gpu_info:
+                print(line[1:12]+line[13:19]+line[23:])
 
             next(lines)
             line = next(lines)
+            if print_gpu_info:
+                print(line)
+
+        # next(lines)
+        line = next(lines)
+        if not print_gpu_info and print_proc_info:
             print(line)
 
-        print(next(lines))
-
         next(lines)
-        print(next(lines))
+        line = next(lines)
+        if print_proc_info:
+            print(line)
         next(lines)
-        print(next(lines))
+        line = next(lines)
+        if print_proc_info:
+            print(line)
         while True:
-            print(next(lines))
+            line = next(lines)
+            if print_proc_info:
+                print(line)
 
     except StopIteration:
         pass
