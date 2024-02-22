@@ -57,7 +57,7 @@ def ssmi():
 
             # if the line starts with a space that means there are no more gpus to be processed
             line = next(lines)
-            if line[0] == ' ':
+            if len(line.strip()) == 0:
                 break
 
             if print_gpu_info:
@@ -76,6 +76,9 @@ def ssmi():
             line = next(lines)
             if print_gpu_info:
                 print(line)
+
+        # since the while loop consumes one line before it exits there is no need to handle the blank
+        # line following the gpu table
 
         # if the gpu details were not printed out print the header for the process table
         line = next(lines)
