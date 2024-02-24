@@ -1,4 +1,4 @@
-.PHONY: build test upload-test upload
+.PHONY: install uninstall build upload-test upload
 
 
 install: ssmi.py
